@@ -41,38 +41,27 @@
                   >Main Page</a
                 >
               </li>
-              <li class="list header__item">
+              <li class="list header__item js-login none">
                 <a href="../src/login.html" class="header__link link"
                   >Login</a
                 >
               </li>
-              <li class="list header__item">
+              <li class="list header__item js-admin none">
                 <a href="../src/adminpage.html" class="header__link  link"
                   >Admin</a
                 >
               </li>
-              <li class="list header__item">
+              <li class="list header__item js-user none">
                 <a href="../src/userinfo.html" class="header__link  link"
                   >User Info</a
                 >
               </li>
+              
             </ul>
           </nav>
           <div class="list__wrap">
             <ul class="list contacts">
-              <li class="contacts__item contacts__item--mail">
-                <a
-                  href="mailto:info@devstudio.com"
-                  lang="en"
-                  class="contacts__link link contacts__link--mail"
-                >
-                  <svg class="contacts__svg contacts__svg--mail">
-                    <use href="./images/sprite.svg#mail"></use>
-                  </svg>
-
-                  <span> info@devstudio.com </span>
-                </a>
-              </li>
+             
               <li class="contacts__item">
                 <a
                   href="tel:+380961111111"
@@ -86,12 +75,18 @@
                   <span>+38 096 111 11 11</span>
                 </a>
               </li>
+             
+             
             </ul>
             
           </div>
           <svg width="30px" height="21px"class="header__basket" >
             <use href="./images/sprite.svg#basket"></use>
           </svg>
+          <svg width="30px" height="21px"class="header__basket logout none" >
+            <use href="./images/sprite.svg#icon-logout"></use>
+          </svg>
+          
         </div>
 
         <button
@@ -667,7 +662,10 @@
         </form>
       </div>
     </div>
+    <script src="./js/about.js" type="module"></script>
     <script src="./js/modal.js"></script>
     <script src="./js/mobile-menu.js"></script>
+    <script src="./js/index.js"></script>
+    
   </body>
 </html>
