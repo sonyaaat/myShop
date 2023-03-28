@@ -9,6 +9,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css"
     />
+    <link rel="stylesheet" href="./sass/main.scss" />
+    <link rel="stylesheet" href="./sass/main.scss" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -53,15 +55,39 @@
                     >User Info</a
                   >
                 </li>
+                
               </ul>
             </nav>
             
+            <div class="list__wrap">
+              <ul class="list contacts">
+               
+                <li class="contacts__item">
+                  <a
+                    href="tel:+380961111111"
+                    lang="en"
+                    class="contacts__link link contacts__link--tel"
+                  >
+                    <svg class="contacts__svg contacts__svg--tel">
+                      <use href="./images/sprite.svg#tel"></use>
+                    </svg>
+  
+                    <span>+38 096 111 11 11</span>
+                  </a>
+                </li>
+               
+               
+              </ul>
+              
+            </div>
             <svg width="30px" height="21px"class="header__basket" >
               <use href="./images/sprite.svg#basket"></use>
             </svg>
             <svg width="30px" height="21px"class="header__basket logout none" >
               <use href="./images/sprite.svg#icon-logout"></use>
             </svg>
+            
+          </div>
           </div>
   
           <button
@@ -192,5 +218,6 @@
       </div>
       <script src="./js/about.js" type="module"></script>
       <script src="./js/userInfo.js" type="module"></script>
+      <script src="./js/spinner.js"></script>
 </body>
 </html>
