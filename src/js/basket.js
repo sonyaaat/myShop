@@ -5,8 +5,8 @@ console.log('aaa');
 const addMarkup = ( items ) => {
     console.log('a');
     const basket = document.querySelector('.cart');
-    const markup = items.map(item => {
-      return ` <section class="product">
+    const markup = items.map(item => 
+     ` <section class="product">
           <div class="product__img"><img src="./images/astronaut 1.svg" alt="Apple MacBook Air 13"></div>
           <div class="product__title">Apple MacBook Air 13</div>
           <div class="product__count">
@@ -26,8 +26,8 @@ const addMarkup = ( items ) => {
                     </svg>
               </button>
           </div>
-      </section>`;
-    });
+      </section>`
+    );
     basket.insertAdjacentHTML('beforeend', markup);
   };
   
