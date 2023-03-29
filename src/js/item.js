@@ -1,6 +1,7 @@
 import axios from 'axios';
 import getCurrentUser from './getCurrentUser';
 import getToken from './getToken';
+import swal from 'sweetalert';
 getCurrentUser();
 getToken();
 const itemId = localStorage.getItem("item");
@@ -11,6 +12,9 @@ axios
     const {name,description,price,quantity,image}=res.data
     console.log(res)
     render(name,description,price,quantity,image)
+  })
+  .then(()=>{
+    addToBasket()
   })
   const render=(name,description,price,quantity,image)=>{
     const markup=` <h1 class="item__header">${name}</h1>
@@ -48,4 +52,30 @@ backBtn.addEventListener("click",()=>{
     window.location.href = '/portfolio.html';
     localStorage.setItem("item","");
 })
+  }
+  const addToBasket=()=>{
+    const addBtn=document.querySelector(".item__button")
+    addBtn.addEventListener("click",()=>{
+      const itemId = localStorage.getItem("item");
+      axios
+      .post(`http://localhost:3000/api/user/items/addToFavorite/${itemId}`)
+      .then(res => {
+        //const {name,description,price,quantity,image}=res.data
+        console.log(res)
+        swal("Added!", "Your item was added!", "success");
+       // render(name,description,price,quantity,image)
+      })
+      .catch((er)=>{
+        console.log(er.response.data.message)
+        if(er.response.data.message==="This item was already added to favorites"){
+          console.log("added")
+          swal("Oops!", "Your item is already added!", "error");
+        }
+        if(er.response.data.message==="Not Authorized"){
+
+          swal("Oops!", "Your are Not Authorized!", "error");
+        }
+      })
+    })
+   
   }

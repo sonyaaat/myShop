@@ -1,10 +1,9 @@
-const spinner=`<div id="loading" class="loading" onClick="hideSpinner()">
+const spinner = `<div id="loading" class="loading" onClick="hideSpinner()">
 Loading&#8230;     
-`
+`;
 
-const body=document.querySelector("body")
-console.log(body)
-body.insertAdjacentHTML("beforeend",spinner)
+const body = document.querySelector('body');
+body.insertAdjacentHTML('beforeend', spinner);
 var loadingDiv = document.getElementById('loading');
 
 function showSpinner() {
@@ -14,11 +13,8 @@ function showSpinner() {
 function hideSpinner() {
   loadingDiv.style.visibility = 'hidden';
 }
-console.log("A")
-showSpinner()
-setTimeout(()=>{
-  console.log("F")
-  hideSpinner()
 
-
-},500)
+showSpinner();
+setTimeout(() => {
+  hideSpinner();
+}, 500);
