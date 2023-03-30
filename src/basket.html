@@ -18,7 +18,7 @@
           <nav class="header__nav">
             <ul class="list header__list">
               <li class="list header__item">
-                <a href="" class="header__link link"
+                <a href="./index.html" class="header__link  link"
                   >About us</a
                 >
               </li>
@@ -28,22 +28,31 @@
                 >
               </li>
               <li class="list header__item js-login none">
-                <a href="../src/login.html" class="header__link link">Login</a>
+                <a href="../src/login.html" class="header__link link"
+                  >Login</a
+                >
               </li>
               <li class="list header__item js-admin none">
-                <a href="../src/adminpage.html" class="header__link link"
+                <a href="../src/adminpage.html" class="header__link  link"
                   >Admin</a
                 >
               </li>
               <li class="list header__item js-user none">
-                <a href="../src/userinfo.html" class="header__link link"
+                <a href="../src/userinfo.html" class="header__link  link"
                   >User Info</a
                 >
               </li>
+              <li class="list header__item js-add none">
+                <a href="../src/add.html" class="header__link  link"
+                  >Add Item</a
+                >
+              </li>
+              
             </ul>
           </nav>
           <div class="list__wrap">
             <ul class="list contacts">
+             
               <li class="contacts__item">
                 <a
                   href="tel:+380961111111"
@@ -57,15 +66,19 @@
                   <span>+38 096 111 11 11</span>
                 </a>
               </li>
+             
+             
             </ul>
+            
           </div>
           <a href="./basket.html">
-            <svg width="30px" height="21px" class="header__basket">
-              <use href="./images/sprite.svg#basket"></use></svg
-          ></a>
-          <svg width="30px" height="21px" class="header__basket logout none">
+            <svg width="30px" height="21px"class="header__basket" >
+              <use href="./images/sprite.svg#basket"></use>
+            </svg></a>
+          <svg width="30px" height="21px"class="header__basket  logout none" >
             <use href="./images/sprite.svg#icon-logout"></use>
           </svg>
+          
         </div>
 
         <button
@@ -76,7 +89,7 @@
           aria-controls="mobile-menu"
         >
           <svg width="30px" height="21px" class="icon-menu">
-           
+            <!-- <use class="icon-cross" href="./images/sprite.svg#cross"></use> -->
             <use class="icon-menu" href="./images/sprite.svg#menu"></use>
           </svg>
         </button>
@@ -84,13 +97,23 @@
     </header>
     <main>
         <section class="section-cart">
-            <header class="section-cart__header">
-                <div class="container">
-                    <h1 class="title-1">Basket</h1>
-                </div>
-            </header>
-            <div class="section-cart__body">
-                <div class="container">
+          <header class="section-cart__header">
+            <div class="container">
+                <h1 class="title-1">Basket</h1>
+            </div>
+            
+        </header>
+        <div class="section-cart__body">
+          <div class="container">
+        <section class="cart">
+          <header class="cart-header">
+              <div class="cart-header__title">Name</div>
+              <div class="cart-header__count">Quantity</div>
+              <div class="cart-header__cost">Price</div>
+          </header>
+        </section>
+        </div>
+      </div>
     
                    
     </main>

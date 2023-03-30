@@ -17,7 +17,6 @@ axios
       event.preventDefault()
         console.log(event.currentTarget.id)
         window.location.href = '/item.html';
-        const h=document.querySelector(".item__header")
         localStorage.setItem("item",event.currentTarget.id );
     });
 });

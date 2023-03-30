@@ -55,6 +55,11 @@
                     >User Info</a
                   >
                 </li>
+                <li class="list header__item js-add none">
+                  <a href="../src/add.html" class="header__link  link"
+                    >Add Item</a
+                  >
+                </li>
                 
               </ul>
             </nav>
@@ -80,9 +85,10 @@
               </ul>
               
             </div>
-            <svg width="30px" height="21px"class="header__basket" >
-              <use href="./images/sprite.svg#basket"></use>
-            </svg>
+            <a href="./basket.html">
+              <svg width="30px" height="21px"class="header__basket" >
+                <use href="./images/sprite.svg#basket"></use>
+              </svg></a>
             <svg width="30px" height="21px"class="header__basket logout none" >
               <use href="./images/sprite.svg#icon-logout"></use>
             </svg>
@@ -115,7 +121,7 @@
             <div class="row">
               <div class="col-lg-7 col-md-10 js-name">
                 <p class="text-white mt-0 mb-5">This is your profile page. You can see your info here and edit your profile</p>
-                <a href="#!" class="btn btn-info">Edit profile</a>
+                <p href="" class="btn btn-info">Edit profile</p>
               </div>
             </div>
           </div>
@@ -151,7 +157,7 @@
                   <label for="images" class="drop-container">
                     <span class="drop-title">Drop files here</span>
                     or
-                    <input type="file" id="images" accept="image/*" class="input-img" required>
+                    <input type="file" accept="image/png, image/gif, image/jpeg" id="images" accept="image/*" class="input-img" required>
                   </label>
                   <button class="admin__submit__btn">Delete user</button>
                 </div>

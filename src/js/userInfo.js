@@ -24,6 +24,59 @@ const editMarkup = (
   email,
   avatar
 ) => {
+  if(!firstName){
+    console.log(avatar);
+    const nameMarkup = ` <h1 class="display-2 text-white">Hello </h1>`;
+    const nameMarkup2 = ` <h3 class="name">
+      <span class="font-weight-light"></span>
+    </h3>`;
+    const usernameMarkup = `
+  <label class="form-control-label" for="input-username">Username</label>
+  <input required type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" name="username" value="">
+  `;
+    const emailMarkup = ` <p class="form-control form-control-alternative"> ${email}<p/>`;
+  
+    const firstNameMarkup = ` <input required type="text" id="input-first-name" class="form-control form-control-alternative"  name="firstname" placeholder="First name" value="">`;
+    const lastNameMarkup = ` <input required type="text" id="input-last-name" class="form-control form-control-alternative" name="lastname" placeholder="Last name" value="">`;
+    const contactMarkup = `<div class="row">
+      <div class="col-md-12">
+        <div class="form-group focused">
+          <label  class="form-control-label" for="input-address">Address</label>
+          <input required id="input-address" class="form-control form-control-alternative" name="address" placeholder="Home Address" value="" type="text">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="form-group focused">
+          <label  class="form-control-label" for="input-city">City</label>
+          <input required type="text" name="city" id="input-city" class="form-control form-control-alternative" placeholder="City" value="">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="form-group focused">
+          <label  class="form-control-label" for="input-country">Country</label>
+          <input required type="text" name="country" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label required class="form-control-label" for="input-country">Postal code</label>
+          <input required type="number" name="postalCode" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code" value="">
+        </div>
+      </div>
+    </div>`;
+    const imgMarkup = `   <img src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg" class="rounded-circle"> height="170" class="rounded-circle">`;
+    namePart.insertAdjacentHTML('afterbegin', nameMarkup);
+    mainName.insertAdjacentHTML('afterbegin', nameMarkup2);
+    usernamePart.insertAdjacentHTML('beforeend', usernameMarkup);
+    emailPart.insertAdjacentHTML('beforeend', emailMarkup);
+    firstnamePart.insertAdjacentHTML('beforeend', firstNameMarkup);
+    lastnamePart.insertAdjacentHTML('beforeend', lastNameMarkup);
+    contactsPart.insertAdjacentHTML('beforeend', contactMarkup);
+    imageEl.innerHTML = imgMarkup;
+  }
+  else{
   console.log(avatar);
   const nameMarkup = ` <h1 class="display-2 text-white">Hello ${firstName}</h1>`;
   const nameMarkup2 = ` <h3 class="name">
@@ -66,7 +119,6 @@ const editMarkup = (
     </div>
   </div>`;
   const imgMarkup = ` <img src="http://localhost:3000/${avatar}" height="170" class="rounded-circle">`;
-
   namePart.insertAdjacentHTML('afterbegin', nameMarkup);
   mainName.insertAdjacentHTML('afterbegin', nameMarkup2);
   usernamePart.insertAdjacentHTML('beforeend', usernameMarkup);
@@ -75,6 +127,8 @@ const editMarkup = (
   lastnamePart.insertAdjacentHTML('beforeend', lastNameMarkup);
   contactsPart.insertAdjacentHTML('beforeend', contactMarkup);
   imageEl.innerHTML = imgMarkup;
+  }
+ 
 };
 const imgChange = event => {
   console.log(event.target.files[0]);
@@ -128,7 +182,10 @@ const handleSubmit = event => {
       username: username.value,
     })
     .then(() => {
+      swal("Success!", "Your info was changed!", "success");
+      setTimeout(()=>{
         window.location.href = '/portfolio.html';
+      },500)
       
     });
 };

@@ -1,5 +1,5 @@
 import axios from "axios";
-console.log("REGIS")
+import swal from 'sweetalert';
 const redirect = () => {
   window.location.href = '/login.html';
 };
@@ -16,7 +16,7 @@ async function handleSubmit(event) {
   } = event.currentTarget;
 
   if (login.value === '' || password.value === '') {
-    return console.log('Please fill in all the fields!');
+    return swal("Oops!","Please fill in all the fields!");
   }
 
   console.log(`Login: ${login.value}, Password: ${password.value}`);
@@ -31,6 +31,6 @@ async function handleSubmit(event) {
     })
     .catch(function (error) {
       // handle error
-      console.log(error);
+      swal("Oops!", error.response.data.message);
     });
 }

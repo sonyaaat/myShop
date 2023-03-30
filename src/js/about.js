@@ -3,6 +3,7 @@ const loggedIn = document.querySelector('.js-login');
 const isAdmin = document.querySelector('.js-admin');
 const isUser = document.querySelector('.js-user');
 const logout = document.querySelector('.logout');
+const add=document.querySelector(".js-add")
 const about = async () => {
   const res = await getCurrentUser();
   if (res === 'no') {
@@ -19,7 +20,9 @@ const about = async () => {
    
       isUser.classList.remove('none');
     } else {
+      console.log(add)
       isAdmin.classList.remove('none');
+      add.classList.remove('none');
     }
     logout.addEventListener("click",()=>{
       localStorage.removeItem("token");

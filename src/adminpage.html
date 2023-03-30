@@ -41,6 +41,7 @@
                       >User Info</a
                     >
                   </li>
+                  
               </ul>
             </nav>
             <div class="list__wrap">
@@ -88,10 +89,10 @@
       <section class=" ">
         <div class="container admin">
             <p class="admin__header">Regular Users</p>
-            <table class="styled-table">
+            <table class="table-users styled-table">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        
                         <th>Mail</th>
                         
                         <th>Number of orders</th>
@@ -106,7 +107,7 @@
             <table class="styled-table ">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                       
                         <th>Mail</th>
                         <th>Role</th>
                     </tr>
@@ -115,8 +116,107 @@
                    
                 </tbody>
             </table>
+            <p class="admin__header admin__header2">Orders</p>
+            <table class="table-orders styled-table">
+              <thead>
+                  <tr>
+                      <th>ItemId</th>
+                      <th>UserId</th>
+                      
+                      <th>Quantity</th>
+                      <th>Status</th>
+                  </tr>
+              </thead>
+              <tbody class="table__body">
+                 
+              </tbody>
+          </table>
         </div>
       </section>
+      <footer class="footer">
+        <div class="container footer__container">
+          <div class="top-part">
+            <div class="left-part">
+              <a href="" lang="en" class="logo-bottom"
+                >Esste<span class="studio-bottom">Store</span></a
+              >
+              <address class="address-tag">
+                <ul class="list footer__list">
+                  <li class="footer__item">
+                    <a href="" class="footer__link address link"
+                      >Vinnytsia Ukraine</a
+                    >
+                  </li>
+                  <li class="footer__item">
+                    <a href="mailto:info@example.com " class="footer__link link"
+                      >info@example.com</a
+                    >
+                  </li>
+                  <li class="footer__item">
+                    <a href="tel:+380991111111" class="footer__link link"
+                      >+38 099 111 11 11</a
+                    >
+                  </li>
+                </ul>
+              </address>
+            </div>
+            <div class="center-part">
+              <p class="footer__join">join</p>
+  
+              <ul class="footer-soc">
+                <li class="list footer-soc__item">
+                  <a href="" class="link footer-soc__link">
+                    <svg class="footer-soc__svg">
+                      <use href="./images/sprite.svg#instagram"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="list footer-soc__item">
+                  <a href="" class="link footer-soc__link">
+                    <svg class="footer-soc__svg">
+                      <use href="./images/sprite.svg#twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="list footer-soc__item">
+                  <a href="" class="link footer-soc__link">
+                    <svg class="footer-soc__svg">
+                      <use href="./images/sprite.svg#facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="list footer-soc__item">
+                  <a href="" class="link footer-soc__link">
+                    <svg class="footer-soc__svg">
+                      <use href="./images/sprite.svg#linkedin"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="right-part">
+            <p for="email" class="footer__subscribe">Subscribe to letters</p>
+            <form class="footer__form">
+              <input
+                type="email"
+                id="footer-email"
+                class="footer__input"
+                placeholder="E-mail"
+              />
+              <button type="submit" class="footer__button">
+                Subscribe
+                <svg class="footer__button--img">
+                  <use
+                    class="footer__button--img"
+                    href="./images/sprite.svg#send"
+                  ></use>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </footer>
       <script src="./js/about.js" type="module"></script>
       <script src="./js/admin.js" type="module"></script>
       
