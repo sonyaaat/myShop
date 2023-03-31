@@ -1,5 +1,6 @@
 import css from '../Layout/Layout.module.css';
 import { clsx } from 'clsx';
+import sprite from '../../images/sprite.svg';
 const Layout = () => {
   return (
     <>
@@ -32,7 +33,7 @@ const Layout = () => {
                     Login
                   </a>
                 </li>
-                <li className={clsx(css.list, css.header__item,)}>
+                <li className={clsx(css.list, css.header__item)}>
                   <a
                     href="../src/adminpage.html"
                     className={clsx(css.header__link, css.link)}
@@ -73,7 +74,7 @@ const Layout = () => {
                     <svg
                       className={clsx(css.contacts__svg, css.contacts__svgtel)}
                     >
-                      <use href="./images/sprite.svg#tel"></use>
+                      <use href={`${sprite}#tel`}></use>
                     </svg>
 
                     <span>+38 096 111 11 11</span>
@@ -83,7 +84,7 @@ const Layout = () => {
             </div>
             <a href="./basket.html">
               <svg width="30px" height="21px" className={css.header__basket}>
-                <use href="./images/sprite.svg#basket"></use>
+                <use href={`${sprite}#basket`}></use>
               </svg>
             </a>
             <svg
@@ -91,7 +92,7 @@ const Layout = () => {
               height="21px"
               className={clsx(css.header__basket, css.logout, css.none)}
             >
-              <use href="./images/sprite.svg#icon-logout"></use>
+              <use href={`${sprite}#icon-logout`}></use>
             </svg>
           </div>
 
@@ -103,14 +104,12 @@ const Layout = () => {
             aria-controls="mobile-menu"
           >
             <svg width="30px" height="21px" className={css.icon_menu}>
-              <use
-                className={css.icon_menu}
-                href="./images/sprite.svg#menu"
-              ></use>
+              <use className={css.icon_menu} href={`${sprite}#menu`}></use>
             </svg>
           </button>
         </div>
       </header>
+     
     </>
   );
 };

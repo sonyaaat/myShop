@@ -36,15 +36,7 @@ ul {
 a{
   text-decoration: none;
 }
-.container {
-  margin-top: 50px;
-  align-items: center;
-  width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 15px;
-  background-color: rgb(222, 229, 235);
-}
+
 .title{
   font-size: 50px;
   text-align: center;
