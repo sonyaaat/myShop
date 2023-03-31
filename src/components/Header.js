@@ -1,3 +1,4 @@
+import { NavLink,Link } from "react-router-dom";
 import sprite from "../images/sprite.svg"
 const Header = () => {
   return (
@@ -11,34 +12,34 @@ const Header = () => {
             <nav class="header__nav">
               <ul class="list header__list">
                 <li class="list header__item">
-                  <a href="" class="header__link header__link--active link">
+                  <Link to="/" class="header__link  link">
                     About us
-                  </a>
+                  </Link>
                 </li>
                 <li class="list header__item">
-                  <a href="../src/portfolio.html" class="header__link link">
+                  <Link to="/portfolio" class="header__link link">
                     Main Page
-                  </a>
+                  </Link>
                 </li>
                 <li class="list header__item js-login none">
-                  <a href="../src/login.html" class="header__link link">
+                  <Link to="/login" class="header__link link">
                     Login
-                  </a>
+                  </Link>
                 </li>
                 <li class="list header__item js-admin none">
-                  <a href="../src/adminpage.html" class="header__link  link">
+                  <Link to="adminpage" class="header__link  link">
                     Admin
-                  </a>
+                  </Link>
                 </li>
                 <li class="list header__item js-user none">
-                  <a href="../src/userinfo.html" class="header__link  link">
+                  <Link to="userinfo" class="header__link  link">
                     User Info
-                  </a>
+                  </Link>
                 </li>
                 <li class="list header__item js-add none">
-                  <a href="../src/add.html" class="header__link  link">
+                  <Link to="/add" class="header__link  link">
                     Add Item
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </nav>

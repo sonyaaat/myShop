@@ -1,12 +1,12 @@
 /* --------------------Hero------------------------------- */
 .hero {
   background-color: $background-accent;
-  // background-image: linear-gradient(
-  //     to right,
-  //     rgba(47, 48, 58, 0.4),
-  //     rgba(47, 48, 58, 0.4)
-  //   ),
-  //   url(../../images/main.jpeg);
+  background-image: linear-gradient(
+      to right,
+      rgba(47, 48, 58, 0.4),
+      rgba(47, 48, 58, 0.4)
+    ),
+    url(../images/main.jpeg);
 
   text-align: center;
 
