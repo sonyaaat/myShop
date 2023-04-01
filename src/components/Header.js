@@ -1,11 +1,21 @@
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink,Link } from "react-router-dom";
+import { logOut } from "redux/auth/auth-operations";
+import {selectIsLoggedIn, selectUser,selectRole} from "../../src/redux/auth/auth-selectors"
 import sprite from "../images/sprite.svg"
 const Header = () => {
+  const dispatch=useDispatch()
+  const isLoggedIn=useSelector(selectIsLoggedIn)
+  const user=useSelector(selectUser)
+  const role=useSelector(selectRole)
+  const handleSubmit=()=>{
+      dispatch(logOut())
+  }
   return (
     <>
       <header class="header">
         <div class="container header__container">
-          <a href="" lang="en" class="logo">
+          <a href="/" lang="en" class="logo">
             Esste<span class="studio">Store</span>
           </a>
           <div class="header__wrap" id="header__wrap">
@@ -21,26 +31,26 @@ const Header = () => {
                     Main Page
                   </Link>
                 </li>
-                <li class="list header__item js-login none">
+                {!isLoggedIn && <li class="list header__item js-login none">
                   <Link to="/login" class="header__link link">
                     Login
                   </Link>
-                </li>
-                <li class="list header__item js-admin none">
+                </li>}
+                {role==="admin" && <li class="list header__item js-admin none">
                   <Link to="adminpage" class="header__link  link">
                     Admin
                   </Link>
-                </li>
-                <li class="list header__item js-user none">
+                </li>}
+                {role==="user" && <li class="list header__item js-user none">
                   <Link to="userinfo" class="header__link  link">
                     User Info
                   </Link>
-                </li>
-                <li class="list header__item js-add none">
+                </li>}
+                {role==="admin" && <li class="list header__item js-add none">
                   <Link to="/add" class="header__link  link">
                     Add Item
                   </Link>
-                </li>
+                </li>}
               </ul>
             </nav>
             <div class="list__wrap">
@@ -60,14 +70,14 @@ const Header = () => {
                 </li>
               </ul>
             </div>
-            <a href="./basket.html">
+            {role && <Link to="/basket ">
               <svg width="30px" height="21px" class="header__basket">
                 <use href={`${sprite}#basket`}></use>
               </svg>
-            </a>
-            <svg width="30px" height="21px" class="header__basket logout none">
+            </Link>}
+            {isLoggedIn && <svg width="30px" height="21px" class="header__basket logout none" onClick={handleSubmit}>
               <use href={`${sprite}#icon-logout`}></use>
-            </svg>
+            </svg>}
           </div>
 
           <button

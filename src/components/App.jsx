@@ -7,25 +7,37 @@ import Login from './Login';
 import Register from './Register';
 import UserInfo from './UserInfo';
 import AdminPage from './AdminPage';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from '../components/RestrictedRoute';
 import Basket from './Basket';
+import { refreshUser } from 'redux/auth/auth-operations';
 import Add from './Add';
 import Buy from './Buy';
 import Item from './Item';
-import background from "../images/main.jpeg"
+import { selectIsRefreshing } from '../redux/auth/auth-selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+
 export const App = () => {
+  const isRefreshing = useSelector(selectIsRefreshing);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
   return (
     <>
       <Header />
       <Routes>
         <Route path="/" index element={<MainPage/>} />
         <Route path="/portfolio" index element={<Portfolio/>} />
-        <Route path="/login" index element={<Login/>} />
-        <Route path="/register" index element={<Register/>} />
-        <Route path="/userinfo" index element={<UserInfo/>} />
-        <Route path="/adminpage" index element={<AdminPage/>} />
-        <Route path="/add" index element={<Add/>} />
-        <Route path="/buy" index element={<Buy/>} />
-        <Route path="/item" index element={<Item/>} />
+        <Route path="/login" index element={<RestrictedRoute restricted component={<Login/>}/>} />
+        <Route path="/register" index element={ <RestrictedRoute restricted component={<Register/>}/>} />
+        <Route path="/userinfo" index element={<PrivateRoute component={<UserInfo/>}/>} />
+        <Route path="/adminpage" index element={<PrivateRoute component={<AdminPage/>}/>} />
+        <Route path="/add" index element={<PrivateRoute component={<Add/>}/>} />
+        <Route path="/buy" index element={<PrivateRoute component={<Buy/>}/>} />
+        <Route path="/basket" index element={<PrivateRoute component={<Basket/>}/>} />
+        <Route path="/item" index element={<PrivateRoute component={<Item/>}/>} />
       </Routes>
       <Footer />
     </>
