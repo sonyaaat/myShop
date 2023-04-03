@@ -1,4 +1,17 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getOrders, getUsers } from 'redux/main/main-operations';
+import { selectAdmins, selectOrders, selectUsers } from 'redux/main/main-selectors';
+
 const AdminPage = () => {
+  const users = useSelector(selectUsers);
+  const admins = useSelector(selectAdmins);
+  const orders=useSelector(selectOrders)
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUsers());
+    dispatch(getOrders())
+  }, [dispatch]);
   return (
     <>
       <section class=" ">
@@ -13,7 +26,16 @@ const AdminPage = () => {
                 <th>Orders in progress</th>
               </tr>
             </thead>
-            <tbody className="table__body"></tbody>
+            <tbody className="table__body">
+              {users.length > 0 &&
+                users.map(mail => (
+                  <tr>
+                    <td>${mail}</td>
+                    <td>1</td>
+                    <td>1</td>
+                  </tr>
+                ))}
+            </tbody>
           </table>
           <p className="admin__header admin__header2">Admins</p>
           <table className="styled-table ">
@@ -23,7 +45,16 @@ const AdminPage = () => {
                 <th>Role</th>
               </tr>
             </thead>
-            <tbody className="table2"></tbody>
+            <tbody className="table2">
+              {admins.length > 0 &&
+                admins.map(mail => (
+                  <tr>
+                    <td>${mail}</td>
+                    <td>Manager</td>
+                  </tr>
+                ))}
+            
+            </tbody>
           </table>
           <p className="admin__header admin__header2">Orders</p>
           <table className="table-orders styled-table">
@@ -36,7 +67,17 @@ const AdminPage = () => {
                 <th>Status</th>
               </tr>
             </thead>
-            <tbody className="table__body"></tbody>
+            <tbody className="table__body">
+                {orders.length > 0 &&
+                orders.map(el => (
+                  <tr>
+                    <td>{el.itemId}</td>
+                    <td>{el.owner}</td>
+                    <td>{el.quantity}</td>
+                    <td>{el.status}</td>
+                  </tr>
+                ))}
+            </tbody>
           </table>
         </div>
       </section>

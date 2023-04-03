@@ -943,6 +943,10 @@ textarea.form-control {
   flex: 1 1 auto;
 }
 
+.centered {
+  margin: 0 auto;
+}
+
 .card-header {
   margin-bottom: 0;
   padding: 1.25rem 1.5rem;

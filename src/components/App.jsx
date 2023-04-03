@@ -17,15 +17,21 @@ import Item from './Item';
 import { selectIsRefreshing } from '../redux/auth/auth-selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
 
+import { ToastContainer } from 'react-toastify';
 export const App = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
   return (
     <>
+     <ToastContainer />
+      {! isRefreshing &&
+     <>
       <Header />
       <Routes>
         <Route path="/" index element={<MainPage/>} />
@@ -35,11 +41,11 @@ export const App = () => {
         <Route path="/userinfo" index element={<PrivateRoute component={<UserInfo/>}/>} />
         <Route path="/adminpage" index element={<PrivateRoute component={<AdminPage/>}/>} />
         <Route path="/add" index element={<PrivateRoute component={<Add/>}/>} />
-        <Route path="/buy" index element={<PrivateRoute component={<Buy/>}/>} />
+        <Route path="/buy/:id" index element={<PrivateRoute component={<Buy/>}/>} />
         <Route path="/basket" index element={<PrivateRoute component={<Basket/>}/>} />
-        <Route path="/item" index element={<PrivateRoute component={<Item/>}/>} />
+        <Route path="/item/:id" index element={<Item/>} />
       </Routes>
-      <Footer />
+      <Footer /></>}
     </>
   );
 };

@@ -1,4 +1,65 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addItem } from 'redux/main/main-operations';
+import {  toast } from 'react-toastify';
+let formData = new FormData();
+let downloaded
+let img
 const Add = () => {
+  const dispatch=useDispatch()
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [price, setPrice] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const handleChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'name':
+        return setName(value);
+      case 'description':
+        return setDescription(value);
+      case 'price':
+        return setPrice(value);
+      case 'quantity':
+        return setQuantity(value);
+
+      default:
+        return;
+    }
+  };
+  const onSubmit = evt => {
+    evt.preventDefault();
+    const {
+      elements: { name, quantity, price, description },
+    } = evt.target;
+    console.log(name, quantity, price, description);
+    formData.append("name",name.value)
+    formData.append("quantity",quantity.value)
+    formData.append("price",price.value)
+    formData.append("description",description.value)
+    console.log(downloaded)
+    if(!name || !quantity || !price || !description || !downloaded){
+      formData=new FormData()
+      toast.error("Add image")
+      return
+    }
+    console.log("formdata",...formData)
+    console.log(name.value, quantity.value, price.value, description.value)
+    dispatch(addItem(formData))
+    setName("")
+    setQuantity("")
+    setPrice("")
+    setDescription("")
+   
+  };
+  const imgChange = event => {
+    console.log('f');
+    img=event.target.files[0]
+    console.log(event.target.files[0]);
+  
+    formData.append('image', event.target.files[0]);
+  downloaded=true
+    console.log(...formData);
+  };
   return (
     <main>
       <div className="main-content" />
@@ -35,6 +96,7 @@ const Add = () => {
                       accept="image/png, image/gif, image/jpeg"
                       id="images"
                       className="input-img"
+                      onChange={imgChange}
                       required
                     />
                   </label>
@@ -51,9 +113,8 @@ const Add = () => {
                   </div>
                 </div>
                 <div className="card-body">
-                  <form className="add__form">
+                  <form className="add__form" onSubmit={onSubmit}>
                     <h6 className="heading-small text-muted mb-4">
-                      {' '}
                       information
                     </h6>
                     <div className="pl-lg-4">
@@ -71,9 +132,10 @@ const Add = () => {
                               type="text"
                               id="input-name"
                               className="form-control form-control-alternative"
-                              placeholder="Username"
-                              value=""
+                              placeholder="name"
+                              value={name}
                               name="name"
+                              onChange={handleChange}
                             />
                           </div>
                         </div>
@@ -90,8 +152,9 @@ const Add = () => {
                               type="text"
                               id="input-username"
                               className="form-control form-control-alternative"
-                              placeholder="Username"
-                              value=""
+                              placeholder="description"
+                              value={description}
+                              onChange={handleChange}
                               name="description"
                             />
                           </div>
@@ -112,8 +175,9 @@ const Add = () => {
                               id="input-first-name"
                               className="form-control form-control-alternative"
                               name="quantity"
-                              placeholder="First name"
-                              value=""
+                              placeholder="quantity"
+                              value={quantity}
+                              onChange={handleChange}
                             />
                           </div>
                         </div>
@@ -131,8 +195,9 @@ const Add = () => {
                               id="input-last-name"
                               className="form-control form-control-alternative"
                               name="price"
-                              placeholder="Last name"
-                              value=""
+                              placeholder="price"
+                              value={price}
+                              onChange={handleChange}
                             />
                           </div>
                         </div>

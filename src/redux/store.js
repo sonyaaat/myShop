@@ -7,7 +7,7 @@
 //   },
 // });
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import { mainReducer } from './mainSlice';
+import { mainReducer } from './main/mainSlice';
 import {
   persistStore,
   persistReducer,
@@ -38,7 +38,7 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-   main:mainReducer
+    main:mainReducer
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

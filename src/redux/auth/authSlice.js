@@ -16,6 +16,7 @@ extraReducers: builder => {
         console.log("action.payload",action.payload)
         console.log("state.user",action.payload.user)
         console.log("action.payload.token",action.payload.token)
+  
         // state.user = action.payload.user;
         // state.token = action.payload.token;
         // state.isLoggedIn = true;

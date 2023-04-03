@@ -1,4 +1,5 @@
 import axios from "axios";
+import {  toast } from 'react-toastify';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 axios.defaults.baseURL = 'http://localhost:3000/api/';
 const token = {
@@ -19,7 +20,8 @@ const token = {
         token.set(responce.data.token)
         return responce.data;
       } catch (error) {
-        console.log("catch")
+        console.log("error",error.response.data.message)
+        toast.error(error.response.data.message)
         return thunkAPI.rejectWithValue(error.message);
       }
     }
@@ -32,6 +34,7 @@ const token = {
         token.set(res.data.token);
         return res.data;
       } catch (error) {
+        toast.error(error.response.data.message)
         return thunkAPI.rejectWithValue(error.message);
       }
     }

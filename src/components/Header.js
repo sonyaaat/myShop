@@ -22,34 +22,34 @@ const Header = () => {
             <nav class="header__nav">
               <ul class="list header__list">
                 <li class="list header__item">
-                  <Link to="/" class="header__link  link">
+                  <NavLink to="/"  className={({isActive})=>isActive? "header__link  link " : "header__link  link "}>
                     About us
-                  </Link>
+                  </NavLink>
                 </li>
                 <li class="list header__item">
-                  <Link to="/portfolio" class="header__link link">
+                  <NavLink to="/portfolio" className={({isActive})=>isActive? "header__link  link header__link--active" : "header__link  link "}>
                     Main Page
-                  </Link>
+                  </NavLink>
                 </li>
                 {!isLoggedIn && <li class="list header__item js-login none">
-                  <Link to="/login" class="header__link link">
+                  <NavLink to="/login" className={({isActive})=>isActive? "header__link  link header__link--active" : "header__link  link "}>
                     Login
-                  </Link>
+                  </NavLink>
                 </li>}
                 {role==="admin" && <li class="list header__item js-admin none">
-                  <Link to="adminpage" class="header__link  link">
+                  <NavLink to="adminpage"  className={({isActive})=>isActive? "header__link  link header__link--active" : "header__link  link "}>
                     Admin
-                  </Link>
+                  </NavLink>
                 </li>}
-                {role==="user" && <li class="list header__item js-user none">
-                  <Link to="userinfo" class="header__link  link">
+                {role && <li class="list header__item js-user none">
+                  <NavLink to="userinfo"  className={({isActive})=>isActive? "header__link  link header__link--active" : "header__link  link "}>
                     User Info
-                  </Link>
+                  </NavLink>
                 </li>}
                 {role==="admin" && <li class="list header__item js-add none">
-                  <Link to="/add" class="header__link  link">
+                  <NavLink to="/add"  className={({isActive})=>isActive? "header__link  link header__link--active" : "header__link  link "}>
                     Add Item
-                  </Link>
+                  </NavLink>
                 </li>}
               </ul>
             </nav>
