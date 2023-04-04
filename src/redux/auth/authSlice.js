@@ -1,5 +1,5 @@
 import { register ,logOut,logIn,refreshUser} from './auth-operations';
-
+import { toast } from 'react-toastify';
 import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   user: { name: null, email: null,role:null },
@@ -7,6 +7,7 @@ const initialState = {
   isLoggedIn: false,
   isRefreshing: false,
 };
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -33,6 +34,9 @@ extraReducers: builder => {
         state.token = action.payload.token;
         state.isLoggedIn = true;
         console.log(state)
+        toast.success("You successfully loged in", {
+          theme: "colored"
+        })
       })
       .addCase(refreshUser.pending,state=>{
         state.isRefreshing=true

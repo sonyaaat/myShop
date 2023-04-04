@@ -148,7 +148,11 @@ const mainSlice = createSlice({
       toast.success("Item was added!")
  
     },
-    [addItem.rejected]:handleRejected
+    [addItem.rejected](state,action){
+ 
+
+toast.error("Item name was duplicfted")
+    }
   },
   reducers: {
     clearSelectedItem(state) {
