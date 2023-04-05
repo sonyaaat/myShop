@@ -11,6 +11,8 @@ const Header = () => {
   const handleSubmit=()=>{
       dispatch(logOut())
   }
+ 
+  
   return (
     <>
       <header class="header">
