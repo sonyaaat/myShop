@@ -8,6 +8,7 @@ import sprite from '../images/sprite.svg';
 const Basket = () => {
   const favorites = useSelector(selectFav);
   console.log('fav', favorites);
+  console.log(favorites)
   //favorites.map((el)=>console.log(el))
   const dispatch = useDispatch();
   useEffect(() => {

@@ -106,7 +106,7 @@ const mainSlice = createSlice({
       console.log("DEL",action.payload)
       state.isLoading = false;
       state.error = null;
-      state.fav = action.payload.fav;
+      state.fav = action.payload.all;
     },
     [deleteFromBasket.rejected]:handleRejected,
 
