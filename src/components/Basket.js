@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import { deleteFromBasket, getFav } from 'redux/main/main-operations';
 import { selectFav } from 'redux/main/main-selectors';
 import sprite from '../images/sprite.svg';
-
+import { buyAll } from 'redux/main/main-operations';
 const Basket = () => {
+  
   const favorites = useSelector(selectFav);
   console.log('fav', favorites);
   console.log(favorites)
@@ -17,8 +18,14 @@ const Basket = () => {
   const onDeleteBasket=(itemId)=>{
     dispatch(deleteFromBasket({id:itemId}))
   }
-  const onBuy=()=>{
-
+  const buyAllItems=()=>{
+    console.log("F")
+   dispatch(buyAll())
+  }
+  const totalSum=()=>{
+    return favorites.reduce((previousValue, {price})=>{
+return previousValue+Number(price)
+    },0)
   }
   return (
     <>
@@ -64,12 +71,13 @@ const Basket = () => {
                           </svg>
                         </button>
                        <Link to={`/buy/${itemId}`}>
-                       <button onClick={onBuy} className="basket__btn" > Buy </button></Link>
+                       <button  className="basket__btn" > Buy </button></Link>
                       </div>
                     </section>
                   ))}
                   {favorites.length===0 && <p className="basket__empty">Your list is empty</p>}
-
+                  {favorites.length>0 && <p className='basket__sum'>Total sum:{totalSum()}</p>}
+                 {favorites.length>0 && <Link to="/confirmed" onClick={buyAllItems}> <button  className="basket__btn buy__all" > Buy all </button></Link>}
               </section>
             </div>
           </div>

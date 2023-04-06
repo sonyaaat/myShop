@@ -12,6 +12,7 @@ import {
   getUsers,
   getOrders,
   addItem,
+  buyAll,
 } from './main-operations';
 import { toast } from 'react-toastify';
 const handlePending = state => {
@@ -152,7 +153,15 @@ const mainSlice = createSlice({
  
 
 toast.error("Item name was duplicfted")
-    }
+    },
+    [buyAll.pending]: handlePending,
+    [buyAll.fulfilled](state, action) {
+      console.log("DEL",action.payload)
+      state.isLoading = false;
+      state.error = null;
+      toast.success("Your order was successfully made")
+    },
+    [buyAll.rejected]:handleRejected,
   },
   reducers: {
     clearSelectedItem(state) {
@@ -160,5 +169,6 @@ toast.error("Item name was duplicfted")
     },
   },
 });
+
 export const { clearSelectedItem } = mainSlice.actions;
 export const mainReducer = mainSlice.reducer;

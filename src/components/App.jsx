@@ -14,6 +14,7 @@ import { refreshUser } from 'redux/auth/auth-operations';
 import Add from './Add';
 import Buy from './Buy';
 import Item from './Item';
+import Confirmed from "./Confirmed"
 import { selectIsRefreshing } from '../redux/auth/auth-selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -43,6 +44,7 @@ export const App = () => {
         <Route path="/add" index element={<PrivateRoute component={<Add/>}/>} />
         <Route path="/buy/:id" index element={<PrivateRoute component={<Buy/>}/>} />
         <Route path="/basket" index element={<PrivateRoute component={<Basket/>}/>} />
+        <Route path="/confirmed" index element={<PrivateRoute component={<Confirmed/>}/>} />
         <Route path="/item/:id" index element={<Item/>} />
       </Routes>
       <Footer /></>}

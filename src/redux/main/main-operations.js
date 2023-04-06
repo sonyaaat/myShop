@@ -112,6 +112,18 @@ export const getAllItems = createAsyncThunk(
       }
     }
   );
+  export const buyAll = createAsyncThunk(
+    'main/buyAll',
+    async (_, thunkAPI) => {
+      try {
+        const response = await axios.post(`/order/all`);
+        return response.data;
+      } catch (e) {
+        
+        return thunkAPI.rejectWithValue(e.message);
+      }
+    }
+  );
   export const getUsers = createAsyncThunk(
     'main/getUsers',
     async (_, thunkAPI) => {
