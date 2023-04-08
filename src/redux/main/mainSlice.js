@@ -13,6 +13,8 @@ import {
   getOrders,
   addItem,
   buyAll,
+  getUserOrders,
+  updateStatus,
 } from './main-operations';
 import { toast } from 'react-toastify';
 const handlePending = state => {
@@ -34,6 +36,7 @@ const mainSlice = createSlice({
     users: {},
     admins: {},
     orders: {},
+    userOrders:{}
   },
   extraReducers: {
     [getAllItems.pending]: handlePending,
@@ -142,6 +145,25 @@ const mainSlice = createSlice({
       toast.success('Your order was successfully made');
     },
     [buyAll.rejected]: handleRejected,
+
+    [getUserOrders.pending]: handlePending,
+    [getUserOrders.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      console.log(action.payload)
+      state.userOrders=action.payload
+    },
+    [getUserOrders.rejected]: handleRejected,
+
+    [updateStatus.pending]: handlePending,
+    [updateStatus.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      console.log(action.payload)
+      state.orders=action.payload
+      toast.success('Status was successfully changed');
+    },
+    [updateStatus.rejected]: handleRejected,
   },
   reducers: {
     clearSelectedItem(state) {

@@ -6,3 +6,4 @@ export const selectUsers = state => state.main.users;
 export const selectAdmins = state => state.main.admins;
 export const selectOrders = state => state.main.orders;
 export const selectIsLoading = state => state.main.isLoading;
+export const selectUserOrders = state => state.main.userOrders;
