@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrders, getUsers } from 'redux/main/main-operations';
-import { selectAdmins, selectOrders, selectUsers } from 'redux/main/main-selectors';
+import { selectAdmins, selectIsLoading, selectOrders, selectUsers } from 'redux/main/main-selectors';
+import Spinner from './Spinner';
 
 const AdminPage = () => {
+  const isLoading=useSelector(selectIsLoading)
+  console.log("FFF",isLoading)
   const users = useSelector(selectUsers);
   const admins = useSelector(selectAdmins);
   const orders=useSelector(selectOrders)
@@ -14,7 +17,7 @@ const AdminPage = () => {
   }, [dispatch]);
   return (
     <>
-      <section class=" ">
+     {isLoading ? <Spinner/>: <section class=" ">
         <div className="container admin">
           <p className="admin__header">Regular Users</p>
           <table className="table-users styled-table">
@@ -80,7 +83,7 @@ const AdminPage = () => {
             </tbody>
           </table>
         </div>
-      </section>
+      </section>}
     </>
   );
 };

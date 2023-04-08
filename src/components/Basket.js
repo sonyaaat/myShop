@@ -2,11 +2,12 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteFromBasket, getFav } from 'redux/main/main-operations';
-import { selectFav } from 'redux/main/main-selectors';
+import { selectFav, selectIsLoading } from 'redux/main/main-selectors';
 import sprite from '../images/sprite.svg';
 import { buyAll } from 'redux/main/main-operations';
+import Spinner from './Spinner';
 const Basket = () => {
-  
+  const isLoading = useSelector(selectIsLoading);
   const favorites = useSelector(selectFav);
   console.log('fav', favorites);
   console.log(favorites)
@@ -44,7 +45,7 @@ return previousValue+Number(price)
                   <div className="cart-header__count">Quantity</div>
                   <div className="cart-header__cost">Price</div>
                 </header>
-                {favorites.length > 0 &&
+                { isLoading ? <Spinner/> : favorites.length > 0 &&
                   favorites.map(({ name, price, image, itemId }) => (
                     <section className="product">
                       <div className="product__img">

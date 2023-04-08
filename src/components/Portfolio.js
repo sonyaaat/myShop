@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllItems } from 'redux/main/main-operations';
-import { selectItems } from 'redux/main/main-selectors';
+import { selectIsLoading, selectItems } from 'redux/main/main-selectors';
+import Spinner from './Spinner';
 const Portfolio = () => {
+  const isLoading=useSelector(selectIsLoading)
   const dispatch = useDispatch();
   //const [items, setItems] = useState([]);
   const items = useSelector(selectItems);
@@ -40,27 +42,28 @@ const Portfolio = () => {
                 </button>
               </li>
             </ul> */}
+            {isLoading ? <Spinner/> :
             <ul class="list portfolio__list">
-              {items &&
-                items.map(item => (
-                  <li class="portfolio__item">
-                    <Link to={`/item/${item._id}`} class="link portfolio__link">
-                      <div class="portfolio__thumb">
-                        <img
-                        alt={item.name}
-                          class="portfolio__img"
-                          src={`http://localhost:3000/${item.image}`}
-                        />
-                      </div>
-                      <div class="portfolio__content">
-                        <h2 class="portfolio__header">{item.name}</h2>
-                        <p class="portfolio__text">{item.description}</p>
-                        <p class="portfolio__price">Price: {item.price}₴</p>
-                      </div>
-                    </Link>
-                  </li>
-                ))}
-            </ul>
+            {items &&
+              items.map(item => (
+                <li class="portfolio__item">
+                  <Link to={`/item/${item._id}`} class="link portfolio__link">
+                    <div class="portfolio__thumb">
+                      <img
+                      alt={item.name}
+                        class="portfolio__img"
+                        src={`http://localhost:3000/${item.image}`}
+                      />
+                    </div>
+                    <div class="portfolio__content">
+                      <h2 class="portfolio__header">{item.name}</h2>
+                      <p class="portfolio__text">{item.description}</p>
+                      <p class="portfolio__price">Price: {item.price}₴</p>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+          </ul>}
           </div>
         </section>
       </main>
