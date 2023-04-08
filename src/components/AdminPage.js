@@ -33,7 +33,7 @@ const AdminPage = () => {
               {users.length > 0 &&
                 users.map(mail => (
                   <tr>
-                    <td>${mail}</td>
+                    <td>{mail}</td>
                     <td>1</td>
                     <td>1</td>
                   </tr>
@@ -52,7 +52,7 @@ const AdminPage = () => {
               {admins.length > 0 &&
                 admins.map(mail => (
                   <tr>
-                    <td>${mail}</td>
+                    <td>{mail}</td>
                     <td>Manager</td>
                   </tr>
                 ))}

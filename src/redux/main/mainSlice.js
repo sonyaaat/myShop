@@ -30,15 +30,14 @@ const mainSlice = createSlice({
     error: null,
     userInfo: {},
     selectedItem: {},
-    fav:{},
-    users:{},
-    admins:{},
-    orders:{}
+    fav: {},
+    users: {},
+    admins: {},
+    orders: {},
   },
   extraReducers: {
     [getAllItems.pending]: handlePending,
     [getAllItems.fulfilled](state, action) {
-      //console.log(action.payload.data)
       state.isLoading = false;
       state.error = null;
       state.items = action.payload.data;
@@ -46,7 +45,6 @@ const mainSlice = createSlice({
     [getAllItems.rejected]: handleRejected,
     [getUserInfo.pending]: handlePending,
     [getUserInfo.fulfilled](state, action) {
-      console.log(action.payload.result);
       state.isLoading = false;
       state.error = null;
       state.userInfo = action.payload.result;
@@ -54,19 +52,17 @@ const mainSlice = createSlice({
     [getUserInfo.rejected]: handleRejected,
     [setUserInfo.pending]: handlePending,
     [setUserInfo.fulfilled](state, action) {
-      console.log(action.payload);
       state.isLoading = false;
       state.error = null;
       state.userInfo = action.payload.data;
-      toast.success("INFO was edited!", {
-        theme: "colored"
-      })
+      toast.success('INFO was edited!', {
+        theme: 'colored',
+      });
     },
     [setUserInfo.rejected]: handleRejected,
 
     [setAvatar.pending]: handlePending,
     [setAvatar.fulfilled](state, action) {
-      console.log(action.payload);
       state.isLoading = false;
       state.error = null;
       state.userInfo = action.payload.data;
@@ -74,94 +70,78 @@ const mainSlice = createSlice({
     [setAvatar.rejected]: handleRejected,
     [getItem.pending]: handlePending,
     [getItem.fulfilled](state, action) {
-      //console.log(action.payload)
       state.isLoading = false;
       state.error = null;
       state.selectedItem = action.payload;
     },
-    [getItem.rejected]:handleRejected,
+    [getItem.rejected]: handleRejected,
     [addToBasket.pending]: handlePending,
     [addToBasket.fulfilled](state, action) {
-      console.log('AA');
-      console.log(action.payload.message);
       state.isLoading = false;
       state.error = null;
 
       toast('Your item wad added to basket!');
     },
     [addToBasket.rejected](_, action) {
-      console.log(action);
-
       toast.error('This item was already added to favorites');
     },
     [getFav.pending]: handlePending,
     [getFav.fulfilled](state, action) {
-      console.log(action.payload)
       state.isLoading = false;
       state.error = null;
       state.fav = action.payload;
     },
-    [getFav.rejected]:handleRejected,
+    [getFav.rejected]: handleRejected,
     [deleteFromBasket.pending]: handlePending,
     [deleteFromBasket.fulfilled](state, action) {
-      console.log("DEL",action.payload)
       state.isLoading = false;
       state.error = null;
       state.fav = action.payload.all;
     },
-    [deleteFromBasket.rejected]:handleRejected,
+    [deleteFromBasket.rejected]: handleRejected,
 
     [makeOrder.pending]: handlePending,
     [makeOrder.fulfilled](state, action) {
-      console.log("DEL",action.payload)
       state.isLoading = false;
       state.error = null;
-      toast.success("Your order was successfully made")
+      toast.success('Your order was successfully made');
       // state.fav = action.payload.fav;
     },
-    [makeOrder.rejected]:handleRejected,
+    [makeOrder.rejected]: handleRejected,
     [getUsers.pending]: handlePending,
     [getUsers.fulfilled](state, action) {
-      console.log(action.payload)
       state.isLoading = false;
       state.error = null;
-     
+
       state.admins = action.payload.admins;
       state.users = action.payload.users;
     },
-    [getUsers.rejected]:handleRejected,
+    [getUsers.rejected]: handleRejected,
 
     [getOrders.pending]: handlePending,
     [getOrders.fulfilled](state, action) {
-      console.log(action.payload)
       state.isLoading = false;
       state.error = null;
-     
-       state.orders = action.payload.data;
- 
+
+      state.orders = action.payload.data;
     },
-    [getOrders.rejected]:handleRejected,
+    [getOrders.rejected]: handleRejected,
     [addItem.pending]: handlePending,
     [addItem.fulfilled](state, action) {
-      console.log(action.payload)
       state.isLoading = false;
       state.error = null;
-      toast.success("Item was added!")
- 
+      toast.success('Item was added!');
     },
-    [addItem.rejected](state,action){
- 
-
-toast.error("Item name was duplicfted")
+    [addItem.rejected](state, action) {
+      toast.error('Item name was duplicfted');
     },
     [buyAll.pending]: handlePending,
     [buyAll.fulfilled](state, action) {
-      console.log("DEL",action.payload)
       state.isLoading = false;
       state.error = null;
-      toast.success("Your order was successfully made")
+      toast.success('Your order was successfully made');
     },
-    [buyAll.rejected]:handleRejected,
+    [buyAll.rejected]: handleRejected,
   },
   reducers: {
     clearSelectedItem(state) {

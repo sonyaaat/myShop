@@ -21,6 +21,7 @@ import { useEffect } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { ToastContainer } from 'react-toastify';
+import Completed from './Completed';
 export const App = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
@@ -45,7 +46,9 @@ export const App = () => {
         <Route path="/buy/:id" index element={<PrivateRoute component={<Buy/>}/>} />
         <Route path="/basket" index element={<PrivateRoute component={<Basket/>}/>} />
         <Route path="/confirmed" index element={<PrivateRoute component={<Confirmed/>}/>} />
+        <Route path="/completed" index element={<PrivateRoute component={<Completed/>}/>} />
         <Route path="/item/:id" index element={<Item/>} />
+
       </Routes>
       <Footer /></>}
     </>
