@@ -190,3 +190,15 @@ export const getAllItems = createAsyncThunk(
       }
     }
   );
+  export const cancelOrder = createAsyncThunk(
+    'main/cancelOrder',
+    async (credentials, thunkAPI) => {
+      try {
+        const response = await axios.post(`/order/cancel`,credentials);
+        return response.data.data;
+      } catch (e) {
+        
+        return thunkAPI.rejectWithValue(e.message);
+      }
+    }
+  );

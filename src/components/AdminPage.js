@@ -1,15 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrders, getUsers } from 'redux/main/main-operations';
-import { selectAdmins, selectIsLoading, selectOrders, selectUsers } from 'redux/main/main-selectors';
-import Spinner from './Spinner';
+import { selectAdmins, selectOrders, selectUsers } from 'redux/main/main-selectors';
 
 const AdminPage = () => {
-  const isLoading=useSelector(selectIsLoading)
-  console.log("FFF",isLoading)
   const users = useSelector(selectUsers);
   const admins = useSelector(selectAdmins);
   const orders=useSelector(selectOrders)
+  console.log("Or",orders)
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUsers());
@@ -17,7 +15,7 @@ const AdminPage = () => {
   }, [dispatch]);
   return (
     <>
-     {isLoading ? <Spinner/>: <section class=" ">
+      <section class=" ">
         <div className="container admin">
           <p className="admin__header">Regular Users</p>
           <table className="table-users styled-table">
@@ -51,7 +49,7 @@ const AdminPage = () => {
             <tbody className="table2">
               {admins.length > 0 &&
                 admins.map(mail => (
-                  <tr>
+                  <tr key={mail}>
                     <td>{mail}</td>
                     <td>Manager</td>
                   </tr>
@@ -74,7 +72,7 @@ const AdminPage = () => {
                 {orders.length > 0 &&
                 orders.map(el => (
                   <tr>
-                    <td>{el.itemId}</td>
+                    <td>{el.itemId._id}</td>
                     <td>{el.owner}</td>
                     <td>{el.quantity}</td>
                     <td>{el.status}</td>
@@ -83,7 +81,7 @@ const AdminPage = () => {
             </tbody>
           </table>
         </div>
-      </section>}
+      </section>
     </>
   );
 };

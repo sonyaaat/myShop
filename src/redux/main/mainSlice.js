@@ -15,6 +15,7 @@ import {
   buyAll,
   getUserOrders,
   updateStatus,
+  cancelOrder,
 } from './main-operations';
 import { toast } from 'react-toastify';
 const handlePending = state => {
@@ -164,6 +165,16 @@ const mainSlice = createSlice({
       toast.success('Status was successfully changed');
     },
     [updateStatus.rejected]: handleRejected,
+
+    [cancelOrder.pending]: handlePending,
+    [cancelOrder.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      console.log(action.payload,"RES")
+      state.userOrders=action.payload
+      toast.success('Order was cancelled');
+    },
+    [cancelOrder.rejected]: handleRejected,
   },
   reducers: {
     clearSelectedItem(state) {
