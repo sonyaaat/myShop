@@ -87,7 +87,7 @@ const mainSlice = createSlice({
       state.isLoading = false;
       state.error = null;
 
-      toast('Your item wad added to basket!');
+      toast('Your item was added to basket!');
     },
     [addToBasket.rejected](_, action) {
       console.log(action);
