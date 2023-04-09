@@ -8,7 +8,7 @@ const UserOrders = () => {
   const orders = useSelector(selectUserOrders);
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState('All');
   const changeFilter = evt => {
     evt.preventDefault();
     const value = evt.target.value;

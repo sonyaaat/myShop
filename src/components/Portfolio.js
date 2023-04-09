@@ -6,7 +6,7 @@ import { selectIsLoading, selectItems } from 'redux/main/main-selectors';
 import Spinner from './Spinner';
 const Portfolio = () => {
   const [filter, setFilter] = useState('');
-  const [search,setSerch]=useState("")
+  const [search, setSerch] = useState('');
 
   const changeFilter = evt => {
     evt.preventDefault();
@@ -18,7 +18,7 @@ const Portfolio = () => {
   //const [items, setItems] = useState([]);
   const items = useSelector(selectItems);
   const [filteredItems, setFilteredItems] = useState(items);
-  const  [searchedItems, setSearchedItems] = useState(items);
+  const [searchedItems, setSearchedItems] = useState(items);
   console.log('items', items);
   useEffect(() => {
     if (filter === 'toHigh') {
@@ -39,15 +39,32 @@ const Portfolio = () => {
       );
       setFilteredItems(res);
     }
+    if(filter==="newest")
+    {
+      setFilteredItems(items)
+    }
   }, [filter, items]);
-  useEffect(()=>{
-
-  },[search])
+  useEffect(() => {
+    if (search) {
+      const res=[...filteredItems].filter((item)=>{
+        return item.name.toLowerCase().includes(search) || item.description.toLowerCase().includes(search)
+      })
+      console.log("SEARCH".res)
+      setSearchedItems(res)
+    }
+    else{
+      setSearchedItems(filteredItems)
+    }
+    
+  }, [search, filteredItems]);
   useEffect(() => {
     console.log('aa');
     dispatch(getAllItems());
   }, [dispatch]);
-
+  function handleChange(event) {
+    setSerch(event.target.value)
+    console.log(event.target.value);
+  }
   return (
     <>
       <main>
@@ -55,17 +72,12 @@ const Portfolio = () => {
           <div className="container portfolio__container">
             <h1 hidden>Portfolio</h1>
 
-            <div class="search-local">
-              <div class="icon">
-                <ion-icon name="location-outline"></ion-icon>
-              </div>
+         
+            
 
-              <input type="text" placeholder="" />
-              <button>
-                <a href="#">Find</a>
-                <ion-icon name="search-outline" class="search-icon"></ion-icon>
-              </button>
-            </div>
+              <input type="text" placeholder="What you want to find?" value={search} class="portfolio__input" onChange={handleChange} />
+             
+           
 
             <script
               type="module"
@@ -86,37 +98,19 @@ const Portfolio = () => {
               onChange={changeFilter}
             >
               <option></option>
+              <option value="newest" selected> Newest</option>
               <option value="toHigh">Price: Low to High</option>
               <option value="toLow">Price: High to Low</option>
               <option value="toAlph">In alphabetical order</option>
             </select>
 
-            {/* <ul className="list portfolio__list">
-              <li>
-                <button
-                  type="button"
-                  className="buttons__item buttons__item--accent"
-                >
-                  All
-                </button>
-              </li>
-              <li>
-                <button type="button" className="buttons__item">
-                  Women
-                </button>
-              </li>
-              <li>
-                <button type="button" className="buttons__item">
-                  Men
-                </button>
-              </li>
-            </ul> */}
+           
             {isLoading ? (
               <Spinner />
             ) : (
               <ul class="list portfolio__list">
-                {filteredItems &&
-                  filteredItems.map(item => (
+                {searchedItems &&
+                  searchedItems.map(item => (
                     <li class="portfolio__item">
                       <Link
                         to={`/item/${item._id}`}
@@ -137,7 +131,9 @@ const Portfolio = () => {
                       </Link>
                     </li>
                   ))}
+                    {searchedItems.length===0 &&  <p className="basket__empty">There isn`t any item with this name</p>}
               </ul>
+            
             )}
           </div>
         </section>

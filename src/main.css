@@ -4374,74 +4374,12 @@ font-size: 25px;
 	}
 }
 
-/* INPUT */
-.search-local input {
-  
-	height: 100%;
-	width: 100%;
-	flex: 1 1 25rem;
-	background: var(--white);
-	display: flex;
-	outline: none;
-	border: none;
-	color: var(--black);
-	font-size: 20px;
-}
-
-input[type="text"]::placeholder {
-	color: var(--black);
-	font-size: 2.4rem;
-}
-
-/* BUTTON */
-.search-local button {
-	background: var(--red);
-	border: none;
-	border-radius: 0 1rem 1rem 0;
-	font-weight: 500;
-	font-size: 20px;
-	height: 50px;
-	width: 18rem;
-	cursor: pointer;
-	transition: all 0.3s;
-	text-align: center;
-}
-
-button a {
-	color: var(--white);
-}
-
-.search-local button .search-icon {
-	display: none;
-}
-
-.search-local button:hover {
-	letter-spacing: 0.5rem;
-}
-
-/* MEDIAS */
-@media (max-width: 575px) {
-	.search-local {
-		padding-left: 0;
-		column-gap: 0.25rem;
-	}
-
-	.search-local button {
-		width: 10rem;
-	}
-
-	button a {
-		display: none;
-	}
-
-	.search-local button .search-icon {
-		display: block;
-		margin-inline: auto;
-		color: var(--white);
-		font-size: 3rem;
-	}
-
-	input[type="text"]::placeholder {
-		font-size: 1.7rem;
-	}
+.portfolio__input{
+  min-width: 300px;
+  max-width: 500px;
+  height: 40px;
+  border: 2px solid blue;
+  margin-bottom: 40px;
+  border-radius: 5px;
+  padding-left: 10px;
 }
