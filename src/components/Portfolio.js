@@ -5,8 +5,16 @@ import { getAllItems } from 'redux/main/main-operations';
 import { selectIsLoading, selectItems } from 'redux/main/main-selectors';
 import Spinner from './Spinner';
 const Portfolio = () => {
+  const items = useSelector(selectItems);
   const [filter, setFilter] = useState('');
   const [search, setSerch] = useState('');
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    console.log('aa');
+    dispatch(getAllItems());
+  }, [dispatch]);
+ 
 
   const changeFilter = evt => {
     evt.preventDefault();
@@ -14,13 +22,18 @@ const Portfolio = () => {
     setFilter(value);
   };
   const isLoading = useSelector(selectIsLoading);
-  const dispatch = useDispatch();
-  //const [items, setItems] = useState([]);
-  const items = useSelector(selectItems);
+ 
+  
+  
+  console.log(items,'KKK')
   const [filteredItems, setFilteredItems] = useState(items);
   const [searchedItems, setSearchedItems] = useState(items);
   console.log('items', items);
   useEffect(() => {
+    if(items){
+      setFilteredItems(items)
+      setSearchedItems(items)
+    }
     if (filter === 'toHigh') {
       const res = [...items].sort(
         (first, second) => parseInt(first.price) - parseInt(second.price)
@@ -57,10 +70,7 @@ const Portfolio = () => {
     }
     
   }, [search, filteredItems]);
-  useEffect(() => {
-    console.log('aa');
-    dispatch(getAllItems());
-  }, [dispatch]);
+  
   function handleChange(event) {
     setSerch(event.target.value)
     console.log(event.target.value);
@@ -131,7 +141,7 @@ const Portfolio = () => {
                       </Link>
                     </li>
                   ))}
-                    {searchedItems.length===0 &&  <p className="basket__empty">There isn`t any item with this name</p>}
+                    {searchedItems.length===0 && search && <p className="basket__empty">There isn`t any item with this name</p>}
               </ul>
             
             )}
