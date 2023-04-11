@@ -22,8 +22,9 @@ const UserOrders = () => {
     dispatch(cancelOrder({ orderId: _id }));
   };
   const [filteredOrders, setFilteredOrders] = useState(orders);
+  console.log(orders,"JJ")
   useEffect(() => {
-    if (filter) {
+    if (filter && orders.length>0) {
       const res = [...orders].filter(item => {
         return item.status.toLowerCase() === filter.toLowerCase();
       });
