@@ -71,7 +71,7 @@ const AdminPage = () => {
                 {orders.length > 0 &&
                 orders.map(el => (
                   <tr>
-                    <td>{el.itemId}</td>
+                    <td>{el.itemId._id}</td>
                     <td>{el.owner}</td>
                     <td>{el.quantity}</td>
                     <td>{el.status}</td>
