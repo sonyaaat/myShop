@@ -75,3 +75,10 @@ label {
     padding-bottom: 94px;
   }
 }
+.centered{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+}

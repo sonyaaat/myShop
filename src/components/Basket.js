@@ -2,15 +2,13 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteFromBasket, getFav } from 'redux/main/main-operations';
-import { selectFav } from 'redux/main/main-selectors';
+import { selectFav, selectIsLoading } from 'redux/main/main-selectors';
 import sprite from '../images/sprite.svg';
-import { buyAll } from 'redux/main/main-operations';
+
+import Spinner from './Spinner';
 const Basket = () => {
-  
+  const isLoading = useSelector(selectIsLoading);
   const favorites = useSelector(selectFav);
-  console.log('fav', favorites);
-  console.log(favorites)
-  //favorites.map((el)=>console.log(el))
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getFav());
@@ -18,10 +16,7 @@ const Basket = () => {
   const onDeleteBasket=(itemId)=>{
     dispatch(deleteFromBasket({id:itemId}))
   }
-  const buyAllItems=()=>{
-    console.log("F")
-   dispatch(buyAll())
-  }
+ 
   const totalSum=()=>{
     return favorites.reduce((previousValue, {price})=>{
 return previousValue+Number(price)
@@ -44,9 +39,9 @@ return previousValue+Number(price)
                   <div className="cart-header__count">Quantity</div>
                   <div className="cart-header__cost">Price</div>
                 </header>
-                {favorites.length > 0 &&
+                { isLoading ? <Spinner/> : favorites.length > 0 &&
                   favorites.map(({ name, price, image, itemId }) => (
-                    <section className="product">
+                    <section className="product" key={itemId}>
                       <div className="product__img">
                         <img
                           className="product__img"
@@ -70,14 +65,14 @@ return previousValue+Number(price)
                             ></use>
                           </svg>
                         </button>
-                       <Link to={`/buy/${itemId}`}>
-                       <button  className="basket__btn" > Buy </button></Link>
+                        {/* <Link to={`/buy/${itemId}`}>
+                       <button  className="basket__btn" > Buy </button></Link> */}
                       </div>
                     </section>
                   ))}
                   {favorites.length===0 && <p className="basket__empty">Your list is empty</p>}
                   {favorites.length>0 && <p className='basket__sum'>Total sum:{totalSum()}</p>}
-                 {favorites.length>0 && <Link to="/confirmed" onClick={buyAllItems}> <button  className="basket__btn buy__all" > Buy all </button></Link>}
+                 {favorites.length>0 && <Link to="/confirmed" > <button  className="basket__btn buy__all" > Buy all </button></Link>}
               </section>
             </div>
           </div>

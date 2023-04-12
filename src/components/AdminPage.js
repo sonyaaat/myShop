@@ -7,6 +7,7 @@ const AdminPage = () => {
   const users = useSelector(selectUsers);
   const admins = useSelector(selectAdmins);
   const orders=useSelector(selectOrders)
+  console.log("Or",orders)
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUsers());
@@ -30,7 +31,7 @@ const AdminPage = () => {
               {users.length > 0 &&
                 users.map(mail => (
                   <tr>
-                    <td>${mail}</td>
+                    <td>{mail}</td>
                     <td>1</td>
                     <td>1</td>
                   </tr>
@@ -48,8 +49,8 @@ const AdminPage = () => {
             <tbody className="table2">
               {admins.length > 0 &&
                 admins.map(mail => (
-                  <tr>
-                    <td>${mail}</td>
+                  <tr key={mail}>
+                    <td>{mail}</td>
                     <td>Manager</td>
                   </tr>
                 ))}

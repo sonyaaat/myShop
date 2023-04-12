@@ -5,9 +5,11 @@ import {
   setUserInfo,
   setAvatar,
 } from 'redux/main/main-operations';
-import { selectUserInfo } from 'redux/main/main-selectors';
+import { selectIsLoading, selectUserInfo } from 'redux/main/main-selectors';
+import Spinner from './Spinner';
 
 const UserInfo = () => {
+  const isLoading=useSelector(selectIsLoading)
   const [Country, setCountry] = useState('');
   const [City, setCity] = useState('');
   const [Email, setEmail] = useState('');
@@ -121,7 +123,7 @@ const UserInfo = () => {
   };
   return (
     <main>
-      <div className="main-content">
+    {isLoading ? <Spinner/> :   <div className="main-content">
         <div className="header pb-8 pt-5 pt-lg-8 d-flex align-items-center admin-photo">
           <span className="mask bg-gradient-default opacity-8"></span>
 
@@ -389,7 +391,7 @@ const UserInfo = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div>}
     </main>
   );
 };

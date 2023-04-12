@@ -22,12 +22,14 @@ const Header = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const role = useSelector(selectRole);
+  console.log(role)
   const handleSubmit = () => {
     dispatch(logOut());
   };
 
   return (
     <>
+
       {isOpen && (
         <div class="menu-container js-menu-container is-open" id="mobile-menu">
           <button
@@ -76,11 +78,25 @@ const Header = () => {
                     </a>
                   </li>
                 )}
+                {role==="user" && (
+                  <li class="list header__item js-user none">
+                    <a href="/myOrders" class="header__link  link">
+                      My orders
+                    </a>
+                  </li>
+                )}
 
                 {role === 'admin' && (
                   <li class="list header__item js-add none">
                     <a href="/add" class="header__link  link">
                       Add Item
+                    </a>
+                  </li>
+                )}
+                {role === 'admin' && (
+                  <li class="list header__item js-add none">
+                    <a href="/adminOrders" class="header__link  link">
+                     Orders
                     </a>
                   </li>
                 )}
@@ -177,6 +193,20 @@ const Header = () => {
                     </NavLink>
                   </li>
                 )}
+                 {role==="user" && (
+                  <li class="list header__item js-user none">
+                    <NavLink
+                      to="/myOrders"
+                      className={({ isActive }) =>
+                        isActive
+                          ? 'header__link  link header__link--active'
+                          : 'header__link  link '
+                      }
+                    >
+                      My orders
+                    </NavLink>
+                  </li>
+                )}
                 {role === 'admin' && (
                   <li class="list header__item js-add none">
                     <NavLink
@@ -188,6 +218,20 @@ const Header = () => {
                       }
                     >
                       Add Item
+                    </NavLink>
+                  </li>
+                )}
+                {role === 'admin' && (
+                  <li class="list header__item js-add none">
+                    <NavLink
+                      to="adminOrders"
+                      className={({ isActive }) =>
+                        isActive
+                          ? 'header__link  link header__link--active'
+                          : 'header__link  link '
+                      }
+                    >
+                      Orders
                     </NavLink>
                   </li>
                 )}

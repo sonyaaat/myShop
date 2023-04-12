@@ -166,3 +166,39 @@ export const getAllItems = createAsyncThunk(
       }
     }
   );
+  export const getUserOrders = createAsyncThunk(
+    'main/userOrders',
+    async (_, thunkAPI) => {
+      try {
+        const response = await axios.get(`/order/byUser`);
+        return response.data.data;
+      } catch (e) {
+        
+        return thunkAPI.rejectWithValue(e.message);
+      }
+    }
+  );
+  export const updateStatus = createAsyncThunk(
+    'main/updateStatus',
+    async (credentials, thunkAPI) => {
+      try {
+        const response = await axios.post(`/order/updateStatus`,credentials);
+        return response.data.data;
+      } catch (e) {
+        
+        return thunkAPI.rejectWithValue(e.message);
+      }
+    }
+  );
+  export const cancelOrder = createAsyncThunk(
+    'main/cancelOrder',
+    async (credentials, thunkAPI) => {
+      try {
+        const response = await axios.post(`/order/cancel`,credentials);
+        return response.data.data;
+      } catch (e) {
+        
+        return thunkAPI.rejectWithValue(e.message);
+      }
+    }
+  );
