@@ -1,11 +1,12 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getUserInfo,
   setUserInfo,
   setAvatar,
-} from 'redux/main/main-operations';
-import { selectUserInfo } from 'redux/main/main-selectors';
+} from '../redux/main/main-operations';
+import { selectUserInfo } from '../redux/main/main-selectors';
 
 const UserInfo = () => {
   const [Country, setCountry] = useState('');

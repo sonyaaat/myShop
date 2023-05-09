@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Header from './Header';
 import { Routes, Route } from 'react-router-dom';
 import Footer from '../components/Footer';
@@ -10,7 +12,7 @@ import AdminPage from './AdminPage';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from '../components/RestrictedRoute';
 import Basket from './Basket';
-import { refreshUser } from 'redux/auth/auth-operations';
+import { refreshUser } from '../redux/auth/auth-operations';
 import Add from './Add';
 import Buy from './Buy';
 import Item from './Item';

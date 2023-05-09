@@ -1,6 +1,7 @@
+import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addItem } from 'redux/main/main-operations';
+import { addItem } from '../redux/main/main-operations';
 import {  toast } from 'react-toastify';
 let formData = new FormData();
 let downloaded

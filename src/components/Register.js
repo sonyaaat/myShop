@@ -1,6 +1,7 @@
+import React from 'react';
 import { Link } from "react-router-dom";
 import background from "../images/main.jpeg"
-import { register } from "redux/auth/auth-operations";
+import { register } from "../redux/auth/auth-operations";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 const Register = () => {

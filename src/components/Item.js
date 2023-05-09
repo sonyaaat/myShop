@@ -1,9 +1,10 @@
+import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { getItem,addToBasket } from 'redux/main/main-operations';
-import { selectItemInfo } from 'redux/main/main-selectors';
-import { clearSelectedItem } from 'redux/main/mainSlice';
+import { getItem,addToBasket } from '../redux/main/main-operations';
+import { selectItemInfo } from '../redux/main/main-selectors';
+import { clearSelectedItem } from '../redux/main/mainSlice';
 const Item = () => {
   const dispatch = useDispatch();
   const { id } = useParams();

@@ -1,12 +1,13 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
-import { logOut } from 'redux/auth/auth-operations';
+import { logOut } from '../redux/auth/auth-operations';
 import {
   selectIsLoggedIn,
   selectUser,
   selectRole,
-} from '../../src/redux/auth/auth-selectors';
+} from '../redux/auth/auth-selectors';
 import sprite from '../images/sprite.svg';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -88,7 +89,7 @@ const Header = () => {
             </nav>
             {role && (
               <Link to="/basket ">
-                <svg width="50px" height="70px" class="header__basket">
+                <svg width="50px" height="70px" class="header__basket"  data-testId="basket-icon">
                   <use href={`${sprite}#basket`}></use>
                 </svg>
               </Link>
@@ -105,7 +106,7 @@ const Header = () => {
           </div>
         </div>
       )}
-      <header class="header">
+      <header class="header" data-testid="header">
         <div class="container header__container">
           <a href="/" lang="en" class="logo">
             Esste<span class="studio">Store</span>
@@ -220,6 +221,7 @@ const Header = () => {
             )}
             {isLoggedIn && (
               <svg
+               data-testid="logout-button"
                 width="30px"
                 height="21px"
                 class="header__basket logout none"

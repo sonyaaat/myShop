@@ -1,9 +1,10 @@
+import React from 'react';
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom"
-import { getUserInfo,getItem } from "redux/main/main-operations"
-import { selectUserInfo,selectItemInfo } from "redux/main/main-selectors"
-import { makeOrder } from "redux/main/main-operations"
+import { getUserInfo,getItem } from "../redux/main/main-operations"
+import { selectUserInfo,selectItemInfo } from "../redux/main/main-selectors"
+import { makeOrder } from "../redux/main/main-operations"
 
 const Buy=()=>{
   const {id}=useParams()

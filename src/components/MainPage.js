@@ -1,3 +1,4 @@
+import React from 'react';
 import sprite from "../images/sprite.svg"
 import img1 from "../images/casual.webp"
 import img2 from "../images/sport.webp"

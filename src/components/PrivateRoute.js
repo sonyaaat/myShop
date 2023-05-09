@@ -1,8 +1,9 @@
+import React from 'react';
 import { Navigate } from 'react-router-dom';
 import {
   selectIsLoggedIn,
   selectIsRefreshing,
-} from 'redux/auth/auth-selectors';
+} from '../redux/auth/auth-selectors';
 import { useSelector } from 'react-redux';
 
 /**

@@ -1,10 +1,11 @@
+import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteFromBasket, getFav } from 'redux/main/main-operations';
-import { selectFav } from 'redux/main/main-selectors';
+import { deleteFromBasket, getFav } from '../redux/main/main-operations';
+import { selectFav } from '../redux/main/main-selectors';
 import sprite from '../images/sprite.svg';
-import { buyAll } from 'redux/main/main-operations';
+import { buyAll } from '../redux/main/main-operations';
 const Basket = () => {
   
   const favorites = useSelector(selectFav);

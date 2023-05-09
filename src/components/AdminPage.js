@@ -1,7 +1,8 @@
+import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getOrders, getUsers } from 'redux/main/main-operations';
-import { selectAdmins, selectOrders, selectUsers } from 'redux/main/main-selectors';
+import { getOrders, getUsers } from '../redux/main/main-operations';
+import { selectAdmins, selectOrders, selectUsers } from '../redux/main/main-selectors';
 
 const AdminPage = () => {
   const users = useSelector(selectUsers);

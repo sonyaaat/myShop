@@ -1,4 +1,6 @@
+import "babel-polyfill";
 import axios from "axios";
+import '@testing-library/jest-dom';
 import {  toast } from 'react-toastify';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 axios.defaults.baseURL = 'http://localhost:3000/api/';
